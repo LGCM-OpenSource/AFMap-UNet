@@ -70,15 +70,15 @@ UNET_MODELS_PATH = {
             'save_metrics': os.path.join(PROJECT_ROOT, f'data{os.sep}output{os.sep}unet_afm_1_channels_only_AFM_CosHeightSum{os.sep}')
     },
     
-    'unet_afm_2_channels_like_yolo_opt_afm':{
-            'model_path':os.path.join(PROJECT_ROOT, f'models{os.sep}unet_afm_2_channels_like_yolo_opt_afm_234_samples_stardist_mask.h5'),
-            'model_name': 'YOLO-AFM',
+    'unet_afm_2_channels_afmap':{
+            'model_path':os.path.join(PROJECT_ROOT, f'models{os.sep}unet_afm_2_channels_afmap_234_samples_stardist_mask.h5'),
+            'model_name': 'afmap_unet',
             'preprocess_img': os.path.join(PROJECT_ROOT, f'data{os.sep}intermediate{os.sep}pre_processing_optico_and_afm{os.sep}image{os.sep}'),
             'preprocess_mask': os.path.join(PROJECT_ROOT, f'data{os.sep}intermediate{os.sep}pre_processing_optico_and_afm{os.sep}mask{os.sep}'),
-            'train_path': os.path.join(PROJECT_ROOT, f'data{os.sep}input{os.sep}train{os.sep}train_2_channels_like_yolo_opt_afm{os.sep}opt_img_training{os.sep}'),
-            'mask_path': os.path.join(PROJECT_ROOT, f'data{os.sep}input{os.sep}train{os.sep}train_2_channels_like_yolo_opt_afm{os.sep}msk_img_training{os.sep}'),
-            'save_predict': os.path.join(PROJECT_ROOT, f'data{os.sep}output{os.sep}unet_afm_2_channels_like_yolo_opt_afm{os.sep}predicts{os.sep}'),
-            'save_metrics': os.path.join(PROJECT_ROOT, f'data{os.sep}output{os.sep}unet_afm_2_channels_like_yolo_opt_afm{os.sep}')
+            'train_path': os.path.join(PROJECT_ROOT, f'data{os.sep}input{os.sep}train{os.sep}train_2_channels_afmap{os.sep}opt_img_training{os.sep}'),
+            'mask_path': os.path.join(PROJECT_ROOT, f'data{os.sep}input{os.sep}train{os.sep}train_2_channels_afmap{os.sep}msk_img_training{os.sep}'),
+            'save_predict': os.path.join(PROJECT_ROOT, f'data{os.sep}output{os.sep}unet_afm_2_channels_afmap{os.sep}predicts{os.sep}'),
+            'save_metrics': os.path.join(PROJECT_ROOT, f'data{os.sep}output{os.sep}unet_afm_2_channels_afmap{os.sep}')
             
             
     },
