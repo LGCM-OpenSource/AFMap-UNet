@@ -44,7 +44,7 @@ layers_list = [
 #             #    'test_metrics_unet_afm_2_channels_caseC_with_height.csv',
 #             #    'test_metrics_unet_afm_1_channels_cosHeightSum.csv'
 #             #    'test_metrics_unet_afm_3_channels_cosHeightSum_optical.csv',
-#             #    'test_metrics_unet_afm_2_channels_yolo_simulator_by_afm.csv',
+#             #    'test_metrics_unet_afm_2_channels_chs.csv',
             
 #             'test_metrics_unet_afm_1_channels_cosHeightSum_thresh_erode_2_layers.csv',
 #             'test_metrics_unet_afm_1_channels_cosHeightSum_thresh_erode_3_layers.csv',
@@ -54,18 +54,18 @@ layers_list = [
 #             'test_metrics_unet_afm_1_channels_cosHeightSum_thresh_erode_5_layers.csv',
 #             # 'AFM_mask_validation_from_test_dataset_only_afm_cosHeightSum_thresh_erode.csv'
 
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_100_images.csv',
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_200_images.csv',
+                # 'test_metrics_half_unet_afm_2_channels_afmap_100_images.csv',
+                # 'test_metrics_half_unet_afm_2_channels_afmap_200_images.csv',
                 
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_25_images_2.csv',
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_50_images_2.csv',
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_100_images_2.csv',
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_200_images_2.csv',
                 
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_25_images_2.csv',
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_50_images_2.csv',
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_100_images_2.csv',
-                # 'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_200_images_2.csv'
+                # 'test_metrics_half_unet_afm_2_channels_afmap_25_images_2.csv',
+                # 'test_metrics_half_unet_afm_2_channels_afmap_50_images_2.csv',
+                # 'test_metrics_half_unet_afm_2_channels_afmap_100_images_2.csv',
+                # 'test_metrics_half_unet_afm_2_channels_afmap_200_images_2.csv'
                 
 
                 
@@ -75,11 +75,11 @@ layers_list = [
                 'test_metrics_half_unet_afm_1_channels_only_AFM_CosHeightSum_120_data_without_artifacts.csv',
                 'test_metrics_half_unet_afm_1_channels_only_AFM_CosHeightSum_240_data_without_artifacts.csv', #o modelo já havia sido treinado antes
                 
-                'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_15_data_without_artifacts.csv',
-                'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_30_data_without_artifacts.csv',
-                'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_60_data_without_artifacts.csv',
-                'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_120_data_without_artifacts.csv',
-                'test_metrics_half_unet_afm_2_channels_like_yolo_opt_afm_240_data_without_artifacts.csv', #o modelo já havia sido treinado antes
+                'test_metrics_half_unet_afm_2_channels_afmap_15_data_without_artifacts.csv',
+                'test_metrics_half_unet_afm_2_channels_afmap_30_data_without_artifacts.csv',
+                'test_metrics_half_unet_afm_2_channels_afmap_60_data_without_artifacts.csv',
+                'test_metrics_half_unet_afm_2_channels_afmap_120_data_without_artifacts.csv',
+                'test_metrics_half_unet_afm_2_channels_afmap_240_data_without_artifacts.csv', #o modelo já havia sido treinado antes
                 
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_15_data_without_artifacts.csv',
                 # 'test_metrics_half_unet_afm_2_channels_only_optical_30_data_without_artifacts.csv',
@@ -120,10 +120,10 @@ for fold in layers_list:
         info_dict['Model'].append('Only Optical')
         # df = df.replace({'Model':fold[13:-4]},'Only Optical')
         
-    if fold.split('_')[8] == 'yolo':
+    if fold.split('_')[8] == 'afmap':
         info_dict['N_images'].append(fold.split('_')[11])
-        info_dict['Model'].append('AFM like YOLO (Optico + AFM)')
-        # df = df.replace({'Model':fold[13:-4]},'AFM like YOLO (Optico + AFM)')
+        info_dict['Model'].append('AFMap (Optico + AFM)')
+        # df = df.replace({'Model':fold[13:-4]},'AFMap (Optico + AFM)')
     info_dict['metrics'].append('Dice')
     
     df = df.query("metrics == 'Dice'")
