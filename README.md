@@ -2,7 +2,7 @@
 
 This repository contains the code and models for a project focused on segmenting cellular structures, specifically nuclei, using data derived from Atomic Force Microscopy (AFM), optionally combined with optical microscopy images. The core segmentation model is based on the U-Net architecture.
 
-![Project Workflow Diagram](papers_fig/mainText/fig3-general_pipeline.png)
+![Project Workflow Diagram](papers_fig/mainText/fig3_Overview_of_the_general_pipeline_and_model_specific_workflows_for_nucleus_segmentation.png)
 
 *Figure: Overview of the data preprocessing and model application workflow.*
 
