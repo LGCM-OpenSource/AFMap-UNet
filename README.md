@@ -1,4 +1,4 @@
-# YOLOnet-AFM: Cellular Structure Segmentation using Atomic Force Microscopy and U-Net to detect and segment nuclei structure.
+# AFMap-UNet: Cellular Structure Segmentation using Atomic Force Microscopy and U-Net to detect and segment nuclei structure.
 
 This repository contains the code and models for a project focused on segmenting cellular structures, specifically nuclei, using data derived from Atomic Force Microscopy (AFM), optionally combined with optical microscopy images. The core segmentation model is based on the U-Net architecture.
 
@@ -77,14 +77,14 @@ Follow these steps to get the project running locally using Docker:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/LGCM-OpenSource/YOLOnet-AFM.git
+   git clone https://github.com/LGCM-OpenSource/AFMap-UNet.git
    ```
 
 2. **Download the dataset and pretrained models (Zenodo)**
 
    Access the dataset and models on Zenodo using the DOI: [10.5281/zenodo.17609119](https://doi.org/10.5281/zenodo.17609119)
    
-   After downloading, unzip the package data_YOLOnetAFM.
+   After downloading, unzip the package data_AFMap_UNet.
    
    Then:
    
@@ -94,7 +94,7 @@ Follow these steps to get the project running locally using Docker:
    
    Your directory structure should look like:
    ```
-   YOLOnet-AFM/
+   AFMap-UNet/
    ├── data/
    ├── models/
    ├── dev/
@@ -167,7 +167,7 @@ Follow these steps to get the project running locally using Docker:
   make run
   ```
 
-  This will execute `main.py` inside the Docker container `YOLOnet-AFM`.
+  This will execute `main.py` inside the Docker container `AFMap-UNet`.
 
 * **Monitor Logs:**
 
@@ -191,7 +191,7 @@ The following commands are defined in the `Makefile` to simplify your workflow:
 | `make up`      | Starts the containers in detached mode (`-d`)                   |
 | `make down`    | Stops and removes the containers                                |
 | `make restart` | Restarts the environment (equivalent to `make down && make up`) |
-| `make logs`    | Displays the logs of the `yolonet_afm` service                  |
+| `make logs`    | Displays the logs of the `afmap_unet` service                  |
 | `make shell`   | Opens an interactive terminal inside the container              |
 | `make run`     | Executes the `main.py` script inside the container              |
 | `make clean`   | Removes unused Docker images and volumes (frees up disk space)  |
@@ -203,7 +203,7 @@ The following commands are defined in the `Makefile` to simplify your workflow:
   The script will prompt you to select an option:
 
       * **Option 1:** Select the **AFM-Only** model pipeline
-      * **Option 2:** Select the **YOLOnet-AFM** model pipeline
+      * **Option 2:** Select the **AFMap-UNet** model pipeline
       * **Option 3:** Select the **OptiCon-PC** model pipeline
 
 > [!TIP]
@@ -233,7 +233,7 @@ Where `<model-selected>` corresponds to one of:
 
 * `unet_afm_1_channels_only_AFM_CosHeightSum/`
 
-* `unet_afm_2_channels_like_yolo_opt_afm/`
+* `unet_afm_2_channels_afmap/`
 
 * `unet_afm_2_channels_only_optical/`
 
@@ -252,7 +252,7 @@ Where `<model-selected>` corresponds to one of:
 │   │   ├── train_1_channels_only_AFM_CosHeightSum
 │   │   │   ├── msk_img_training
 │   │   │   └── opt_img_training
-│   │   ├── train_2_channels_like_yolo_opt_afm
+│   │   ├── train_2_channels_afmap
 │   │   │   ├── msk_img_training
 │   │   │   └── opt_img_training
 │   │   └── train_2_channels_only_optical
@@ -272,7 +272,7 @@ Where `<model-selected>` corresponds to one of:
 ├── output
 │   ├── unet_afm_1_channels_only_AFM_CosHeightSum
 │   │   └── predicts
-│   ├── unet_afm_2_channels_like_yolo_opt_afm
+│   ├── unet_afm_2_channels_afmap
 │   │   └── predicts
 │   └── unet_afm_2_channels_only_optical
 │       └── predicts
