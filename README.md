@@ -84,13 +84,13 @@ Follow these steps to get the project running locally using Docker:
 
    Access the dataset and models on Zenodo using the DOI: [10.5281/zenodo.17609119](https://doi.org/10.5281/zenodo.17609119)
    
-   After downloading, unzip the package data_AFMap_UNet.
+   After downloading, unzip the package `data`.
    
    Then:
    
-   Rename the unzipped folder to data and place it in the project root directory.
+   Take the unzipped folder and place it in the project root directory.
    
-   Move the models folder (also included in the Zenodo package) to the project root.
+   Move `models` folder (also included in the Zenodo package) to the project root.
    
    Your directory structure should look like:
    ```
