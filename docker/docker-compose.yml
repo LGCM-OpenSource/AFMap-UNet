@@ -1,10 +1,10 @@
 services:
-  yolonet_afm:
+  afmap_unet:
     build:
       context: ..
       dockerfile: docker/Dockerfile
 
-    container_name: YOLOnet-AFM
+    container_name: AFMap-UNet
     command: ["tail", "-f", "/dev/null"]
 
     stdin_open: true

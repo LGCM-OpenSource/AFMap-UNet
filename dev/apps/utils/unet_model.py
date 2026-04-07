@@ -65,7 +65,7 @@ def build_unet_2_layers(input_shape):
     '''
     Parameters
     ----------
-    input_shape(array like): image input data to processing 256 X 256 x 6
+    input_shape(array like): image input data to processing 256 X 256 X N_channels (1 or 2 in this project)
     
     Return
     -------
@@ -100,7 +100,7 @@ def build_unet_3_layers(input_shape):
     '''
     Parameters
     ----------
-    input_shape(array like): image input data to processing 256 X 256 x 6
+    input_shape(array like): image input data to processing 256 X 256 X N_channels (1 or 2 in this project)
     
     Return
     -------
@@ -136,7 +136,7 @@ def build_unet(input_shape):
     '''
     Parameters
     ----------
-    input_shape(array like): image input data to processing 256 X 256 x 6
+    input_shape(array like): image input data to processing 256 X 256 X N_channels (1 or 2 in this project)
     
     Return
     -------
@@ -174,7 +174,7 @@ def build_unet_5_layers(input_shape):
     '''
     Parameters
     ----------
-    input_shape(array like): image input data to processing 256 X 256 x 6
+    input_shape(array like): image input data to processing 256 X 256 X N_channels (1 or 2 in this project)
     
     Return
     -------

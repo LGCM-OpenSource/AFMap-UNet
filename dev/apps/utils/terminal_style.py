@@ -18,19 +18,19 @@ class TerminalStyles:
     
     SAVE_COLOR = '\033[92m\033[1m\033[3m'
     ONLY_AFM = COLORS['PURPLE']
-    AFM_YOLO = COLORS['GREEN']
+    AFMAP = COLORS['GREEN']
     OPTICAL = COLORS['BLUE']
 class UserInput:
     @staticmethod
     def select_model():
         models = {
             '1': ('AFM Only', 'unet_afm_1_channels_only_AFM_CosHeightSum'),
-            '2': ('YOLO-AFM', 'unet_afm_2_channels_like_yolo_opt_afm'),
+            '2': ('AFMap', 'unet_afm_2_channels_afmap'),
             '3': ('Optical-Only', 'unet_afm_2_channels_only_optical')
         }
         print(f'''{TerminalStyles.BOLD}Select your model:{TerminalStyles.RESET}
                  1 - {TerminalStyles.ONLY_AFM}{models['1'][0]}{TerminalStyles.RESET}
-                 2 - {TerminalStyles.AFM_YOLO}{models['2'][0]}{TerminalStyles.RESET}
+                 2 - {TerminalStyles.AFMAP}{models['2'][0]}{TerminalStyles.RESET}
                  3 - {TerminalStyles.OPTICAL}{models['3'][0]}{TerminalStyles.RESET}
                  ____________________________________''')
         

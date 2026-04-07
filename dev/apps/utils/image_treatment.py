@@ -553,8 +553,8 @@ class GenerateAFMOptico:
     def select_feature_type(self, channels, pre_process):
         self.logger.info(f"Selecting feature type based on pre_process: {pre_process}")
         original_channel_count = len(channels)
-        if pre_process == 'YOLO-AFM':
-            self.logger.debug("Applying YOLO-AFM feature selection (cos_height_sum, kernel 15x15, not only AFM).")
+        if pre_process == 'AFMap':
+            self.logger.debug("Applying AFMap feature selection (cos_height_sum, kernel 15x15, not only AFM).")
             channels = self.cos_height_sum_feature(channels, kernel_size=(15, 15), only_afm=False)
         elif pre_process == 'AFM-Only':
             self.logger.debug("Applying AFM-Only feature selection (cos_height_sum, kernel 5x5, only AFM).")
@@ -574,7 +574,7 @@ class GenerateAFMOptico:
 
     def select_normalization(self, afm_info, feat, pre_process,  substrate=False):
         self.logger.debug(f"Selecting normalization for feature '{feat}'. Pre-process: {pre_process}, Substrate: {substrate}")
-        if pre_process == 'yolo-afm':
+        if pre_process == 'afmap':
             if feat == 'Planned Height':
                 self.logger.debug(f"Applying Min-Max scaling to '{feat}'.")
                 afm_info = self.df_afm.min_max_scale(afm_info, feat, substrate=substrate)

@@ -10,7 +10,7 @@ parser.add_argument('-ms', '--model_selection', type=str, help="select your mode
 args = parser.parse_args()
 model_selector = args.model_selection
 
-# model_selector = 'unet_afm_2_channels_like_yolo_opt_afm'
+# model_selector = 'unet_afm_2_channels_afmap'
 
 dire = os.listdir(CROP_PATH['optical_crop_resized'])
 last_process = '_optico_crop_resized.png'

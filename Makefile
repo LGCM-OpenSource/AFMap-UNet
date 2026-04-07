@@ -1,5 +1,5 @@
-SERVICE_NAME = yolonet_afm
-CONTAINER = YOLOnet-AFM
+SERVICE_NAME = afmap_unet
+CONTAINER = AFMap-UNet
 COMPOSE_FILE = docker/docker-compose.yml
 
 .PHONY: build up down restart logs shell clean

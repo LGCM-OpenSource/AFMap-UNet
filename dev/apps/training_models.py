@@ -4,7 +4,7 @@ import yaml
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau, EarlyStopping
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam, SGD
 from utils import (build_half_unet_model_batch_normalization,
                    build_unet, iou, dice_coef, create_dir,
                    load_config, UNET_MODELS_PATH,
@@ -131,12 +131,19 @@ def train_model(model, train_dataset, valid_dataset, model_name, config):
     """Trains the specified model. Logs configuration and progress."""
     logger.info(f"Starting training for model: {model_name}")
     try:
-        # Log compilation parameters
-        optimizer_config = Adam(config["training"]["learning_rate"]).get_config()
-        logger.info(f"Compiling model with loss: 'binary_crossentropy', optimizer: Adam({optimizer_config}), metrics: [dice_coef, iou, Recall, Precision]")
+        optimizer_name = config["training"].get("optimizer", "Adam")
+        if optimizer_name == "SGD":
+            optimizer = SGD(config["training"]["learning_rate"])
+        else:
+            optimizer = Adam(config["training"]["learning_rate"])
+
+        optimizer_config = optimizer.get_config()
+        logger.info(
+            f"Compiling model with loss: 'binary_crossentropy', optimizer: {optimizer_name}({optimizer_config}), metrics: [dice_coef, iou, Recall, Precision]"
+        )
         model.compile(
             loss="binary_crossentropy",
-            optimizer=Adam(config["training"]["learning_rate"]),
+            optimizer=optimizer,
             metrics=[dice_coef, iou, tf.keras.metrics.Recall(), tf.keras.metrics.Precision()],
         )
         # model.summary(print_fn=logger.info) # Log model summary
@@ -145,20 +152,34 @@ def train_model(model, train_dataset, valid_dataset, model_name, config):
         model_save_path = os.path.join(config["general"]["model_folder"], f"{model_name}.h5")
         log_save_path = os.path.join(config["general"]["model_folder"], f"training_{model_name}.log")
         monitor_metric = config["general"]["monitor"]
+        callbacks_config = config.get("callbacks", {})
+        model_checkpoint_config = callbacks_config.get("model_checkpoint", {})
+        reduce_lr_config = callbacks_config.get("reduce_lr", {})
+        early_stopping_config = callbacks_config.get("early_stopping", {})
 
         logger.info("Setting up callbacks:")
         model_checkpoint = ModelCheckpoint(
-            model_save_path, monitor=monitor_metric, save_best_only=True, verbose=1
+            model_save_path,
+            monitor=monitor_metric,
+            save_best_only=model_checkpoint_config.get("save_best_only", True),
+            verbose=model_checkpoint_config.get("verbose", 1),
         )
 
         reduce_lr = ReduceLROnPlateau(
-            monitor=monitor_metric, factor=0.1, patience=5, min_lr=1e-7, verbose=1
+            monitor=monitor_metric,
+            factor=reduce_lr_config.get("factor", 0.1),
+            patience=reduce_lr_config.get("patience", 5),
+            min_lr=reduce_lr_config.get("min_lr", 1e-7),
+            verbose=reduce_lr_config.get("verbose", 1),
         )
 
         csv_logger = CSVLogger(log_save_path)
 
         early_stopping = EarlyStopping(
-            monitor=monitor_metric, patience=20, restore_best_weights=False, verbose=1
+            monitor=monitor_metric,
+            patience=early_stopping_config.get("patience", 20),
+            restore_best_weights=early_stopping_config.get("restore_best_weights", False),
+            verbose=early_stopping_config.get("verbose", 1),
         )
 
         callbacks_list = [model_checkpoint, reduce_lr, csv_logger, early_stopping]

@@ -19,7 +19,7 @@ layers_list = [
 
 # layers_list = [f'validation_cv_metrics_fold_{i+1}_unet_afm_crossval_1_channels_only_afm_cosHeightSum_thresh_erode_CORRECTED.csv' for i in range(10)]
 
-# title_chart = 'Unet Optico + AFM: AFM like YOLO (learning curve) balanced (15 - 240)' # unet_AFM_6_channels_diff_layers
+# title_chart = 'Unet Optico + AFM: AFMap(learning curve) balanced (15 - 240)' # unet_AFM_6_channels_diff_layers
 # title_chart = 'Unet Only AFM: CHS feature (learning curve) (15 - 234)'
 title_chart = 'Test2'
 for fold in layers_list:
