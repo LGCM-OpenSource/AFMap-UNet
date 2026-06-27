@@ -82,7 +82,7 @@ Follow these steps to get the project running locally using Docker:
 
 2. **Download the dataset and pretrained models (Zenodo)**
 
-   Access the dataset and models on Zenodo using the DOI: [10.5281/zenodo.17609119](https://doi.org/10.5281/zenodo.17609119)
+   Access the dataset and models on Zenodo using the DOI: [10.5281/zenodo.19373203](https://doi.org/10.5281/zenodo.19373203)
    
    After downloading, unzip the package `data`.
    
@@ -100,6 +100,7 @@ Follow these steps to get the project running locally using Docker:
    ├── dev/
    ├── docker/
    ├── requirements.txt
+   ├── config.yaml
    └──...
    ```
    **2.1 Demonstration Test (Optional)**
